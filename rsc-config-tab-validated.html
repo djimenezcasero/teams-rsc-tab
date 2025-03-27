@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Configurar pestaña RSC</title>
+  <script src="https://res.cdn.office.net/teams-js/2.0.0/js/MicrosoftTeams.min.js"></script>
+</head>
+<body>
+  <h2>✅ Configuración de pestaña lista</h2>
+  <p>Al pulsar Guardar, se completa el registro RSC para este equipo.</p>
+
+  <script>
+    microsoftTeams.app.initialize().then(() => {
+      microsoftTeams.pages.config.registerOnSaveHandler(function (saveEvent) {
+        microsoftTeams.pages.config.setConfig({
+          suggestedDisplayName: "SCOM RSC",
+          entityId: "rsc-config",
+          contentUrl: "https://adaptivecards.io/designer",
+          websiteUrl: "https://adaptivecards.io/designer"
+        });
+        saveEvent.notifySuccess();
+      });
+
+      microsoftTeams.pages.config.setValidityState(true);
+    });
+  </script>
+</body>
+</html>
